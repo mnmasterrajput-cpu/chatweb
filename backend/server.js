@@ -1,6 +1,6 @@
 const express = require("express");
 const http = require("http");
-const db = require("../dbconnection/db");
+const db = require("./db");
 const { Server } = require("socket.io");
 const cors = require("cors");
 
@@ -250,7 +250,7 @@ app.get("/sendmsg", (req, res) => {
         });
     });
 });
-
-server.listen(8000, () => {
-    console.log("Server running on port 8000");
+const PORT = process.env.PORT || 8000;
+server.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
