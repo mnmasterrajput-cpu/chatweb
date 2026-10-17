@@ -25,8 +25,7 @@ function createg() {
     let msg2 = document.getElementById("input").value;
     if(msg2.trim() === "") return;
 
-    // Pehle server par group detail bhej kar group_unique_id laana hoga
-    fetch("http://localhost:8000/groups", {
+    fetch("https://chatweb-ka1f.onrender.com/groups", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -41,14 +40,13 @@ function createg() {
         let group_unique_id = data.group_unique_id;
         console.log("Group created with ID:", group_unique_id);
 
-        // Ab UI par group ka element banayein aur usme ID set karein
         let cgroup = document.createElement("div");
         cgroup.classList.add("newgroup");
 
         let groupsbtn = document.createElement("button");
         groupsbtn.classList.add("ngbtn");
         groupsbtn.innerText = msg2;
-        groupsbtn.dataset.groupId = group_unique_id; // 🔑 Ye sabse zaroori hai!
+        groupsbtn.dataset.groupId = group_unique_id;
 
         groupsbtn.addEventListener("click", join_group);
 
@@ -56,7 +54,7 @@ function createg() {
         document.getElementById("x").appendChild(cgroup);
         cgroup.style.display = "block";
 
-        ret(); // Popup band karo aur input clear karo
+        ret();
         document.getElementById("input").value = "";
     })
     .catch((error) => {
@@ -73,7 +71,7 @@ function sign() {
         return;
     }
 
-    fetch("http://localhost:8000/message", {
+    fetch("https://chatweb-ka1f.onrender.com/message", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -89,7 +87,6 @@ function sign() {
         unique_id = data.unique_id;
         username = data.username;
         
-        // Sign up ke baad bhi popup hide ho jayega
         document.getElementById("loginPopup").style.display = "none";
         recivegroup();
     })
@@ -99,7 +96,7 @@ function sign() {
 } 
 
 function groupdetail() {
-    fetch("http://localhost:8000/groups", {
+    fetch("https://chatweb-ka1f.onrender.com/groups", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -120,14 +117,13 @@ function groupdetail() {
 }
 
 function recivegroup() {
-    fetch("http://localhost:8000/sendgroup", {
+    fetch("https://chatweb-ka1f.onrender.com/sendgroup", {
         method: "GET"
     })
     .then((result) => result.json())
     .then((data) => {
         console.log("Database se groups:", data);
         
-        // Purani list clear kar lo taaki duplicate na ho
         document.getElementById("x").innerHTML = "";
 
         data.groups.forEach((group) => {
@@ -151,7 +147,7 @@ function recivegroup() {
     });
 }
 
-const socket = io("http://localhost:8000");
+const socket = io("https://chatweb-ka1f.onrender.com");
 
 socket.on("connect", () => {
     console.log("SOCKET CONNECTED:", socket.id);
@@ -185,7 +181,6 @@ function sendbtn() {
         return;
     }
 
-    // Yahan hum message ke sath username bhi jod rahe hain (jaise WhatsApp par dikhta hai)
     let formattedMessage = username + ": " + msg;
 
     socket.emit("send_message", {
@@ -209,7 +204,7 @@ function getmsg() {
     let messagesDiv = document.getElementById("messages");
     messagesDiv.innerHTML = "";
 
-    fetch(`http://localhost:8000/sendmsg?group_unique_id=${groupId}`, {
+    fetch(`https://chatweb-ka1f.onrender.com/sendmsg?group_unique_id=${groupId}`, {
         method: "GET"
     })
     .then((result) => result.json())
@@ -218,7 +213,6 @@ function getmsg() {
             let newDiv = document.createElement("div");
             newDiv.innerText = msgObj.message;
 
-            // Check karo ki message aapne bheja hai ya kisi aur ne
             if (String(msgObj.sender_unique_id) === String(unique_id)) {
                 newDiv.classList.add("right");
             } else {
@@ -245,7 +239,6 @@ socket.on("receive_message", (data) => {
     let newDiv = document.createElement("div");
     newDiv.innerText = data.message;
 
-    // Live message ke liye bhi check karo ki sender aap hain ya nahi
     if (String(data.sender_unique_id) === String(unique_id)) {
         newDiv.classList.add("right");
     } else {
@@ -270,7 +263,7 @@ function login() {
         return;
     }
 
-    fetch("http://localhost:8000/login", {
+    fetch("https://chatweb-ka1f.onrender.com/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
