@@ -1,0 +1,402 @@
+/* Reset & General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* 1. Login Popup */
+.loginPopup {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.loginBox {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    width: 350px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.loginBox h2 {
+    margin-bottom: 20px;
+    color: #111b21;
+    text-align: center;
+}
+
+.loginBox label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #54656f;
+    margin-bottom: 5px;
+}
+
+.loginBox input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #d1d7db;
+    border-radius: 6px;
+    outline: none;
+}
+
+.loginBox button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #00a884;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.loginBox button:hover {
+    background-color: #01755c;
+}
+
+/* 2. Create Group Popup */
+.popup {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1500;
+}
+
+#popup {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    width: 350px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    display: none; 
+    flex-direction: column;
+}
+
+#popup h2 {
+    margin-bottom: 20px;
+    color: #111b21;
+    text-align: center;
+}
+
+.popgn {
+    margin-bottom: 15px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.popgn label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #54656f;
+    margin-bottom: 5px;
+}
+
+.popgn input {
+    width: 100% !important;
+    padding: 10px;
+    border: 1px solid #d1d7db;
+    border-radius: 6px;
+    outline: none;
+    text-align: left !important;
+}
+
+.cgbtn {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.cgbtn .btn2 {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background-color: #00a884;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.cgbtn .btn2:first-child {
+    background-color: #eb4034;
+}
+
+.cgbtn .btn2:first-child:hover {
+    background-color: #c53328;
+}
+
+.cgbtn .btn2:hover {
+    background-color: #01755c;
+}
+
+/* 3. Main Single Screen Layout (`.main1`) */
+.main1 {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Left Sidebar (`.users`) */
+.users {
+    width: 300px;
+    background-color: #111b21;
+    color: #e9edef;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #222d34;
+    height: 100vh;
+}
+
+.appimg {
+    width: 40px;
+    height: 40px;
+    margin: 15px auto 5px auto;
+}
+
+.appnam {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #00a884;
+    letter-spacing: 1px;
+}
+
+/* Groups List Container */
+.group {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 10px;
+}
+
+.newgroup {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    background-color: #202c33;
+    border-radius: 8px;
+    padding: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.newgroup:hover {
+    background-color: #2a3942;
+}
+
+.pbtn {
+    width: 35px;
+    height: 35px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.ngbtn {
+    background: transparent;
+    border: none;
+    color: #e9edef;
+    font-size: 14px;
+    text-align: left;
+    padding-left: 10px;
+    width: 100%;
+    cursor: pointer;
+}
+
+/* Create Group Button at bottom */
+.newg {
+    padding: 15px;
+    background-color: #202c33;
+    text-align: center;
+}
+
+.gbtn {
+    width: 100%;
+    background-color: #00a884;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.gbtn:hover {
+    background-color: #01755c;
+}
+
+/* 4. Right Chat Area (`.main`) */
+.main {
+    flex: 1;
+    display: none;
+    flex-direction: column;
+    background-color: #efeae2;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Chat Header */
+.tomsg {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f0f2f5;
+    border-bottom: 1px solid #d1d7db;
+    height: 60px;
+    flex-shrink: 0;
+}
+
+.tomsg .img {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+}
+
+.tomsg .name {
+    font-weight: bold;
+    font-size: 16px;
+    color: #111b21;
+}
+
+/* Messages Box */
+#messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Message Bubbles */
+.left {
+    background-color: #ffffff;
+    align-self: flex-start;
+    padding: 8px 12px;
+    border-radius: 0px 8px 8px 8px;
+    max-width: 60%;
+    word-wrap: break-word;
+    box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
+    font-size: 14px;
+}
+
+.right {
+    background-color: #d9fdd3;
+    align-self: flex-end;
+    padding: 8px 12px;
+    border-radius: 8px 0px 8px 8px;
+    max-width: 60%;
+    word-wrap: break-word;
+    box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
+    font-size: 14px;
+}
+
+/* Send Message Bar (Bohot zaroori fix) */
+.send {
+    display: flex;
+    padding: 10px 20px;
+    background-color: #f0f2f5;
+    align-items: center;
+    border-top: 1px solid #d1d7db;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.msg {
+    flex: 1;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+    background-color: #ffffff;
+}
+
+.snd {
+    background-color: #00a884;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    margin-left: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.snd:hover {
+    background-color: #01755c;
+}
+
+
+
+/* ==========================================
+   MOBILE RESPONSIVE DESIGN (Media Query)
+   ========================================== */
+@media screen and (max-width: 768px) {
+    /* 1. Jab chat open ho, toh mobile par sidebar hide ho jaye */
+    .main1.chat-active .users {
+        display: none;
+    }
+
+    /* 2. Jab chat open ho, toh mobile par chat window poori screen le le */
+    .main1.chat-active .main {
+        display: flex !important;
+        width: 100vw;
+    }
+
+    /* 3. By default mobile par sirf users/groups dikhenge, chat hidden rahegi */
+    .users {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .main {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    /* 4. Mobile ke liye chat header mein Back button add karne ke liye styling */
+    .back-btn {
+        display: block !important;
+        background: transparent;
+        border: none;
+        font-size: 20px;
+        margin-right: 10px;
+        cursor: pointer;
+        color: #111b21;
+    }
+}
+
+/* Desktop par back button hidden rahega */
+.back-btn {
+    display: none;
+}

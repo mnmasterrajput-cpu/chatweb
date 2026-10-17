@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="1st.css">
+</head>
+<body>
+  
+   <div id="loginPopup" class="loginPopup">
+
+    <div class="loginBox">
+
+        <h2>Login</h2>
+
+        <label>Username</label>
+        <input type="text" id="username" placeholder="Enter username">
+
+        <label>Password</label>
+        <input type="password" id="password" placeholder="Enter password">
+
+        <button onclick="sign()">sign</button>
+        <button onclick="login()">login</button>
+    </div>
+
+</div>
+      <div id="popup" class="popup">
+            <h2>create group</h2>
+            <div class="popgn">
+                <label style="width: 100%; float: left;">Group Name</label>
+                <input type="text" id="input" placeholder="enter group name" style="width: 70%; float: left; display: block; text-align: center;">
+            </div>
+            <div class="cgbtn">
+                <button class="btn2" onclick="ret()"> cancle</button>
+                <button class="btn2" onclick="createg()" >create</button>
+            </div>
+        </div>
+    <div class="main1" id="main1">
+    <div class="users">
+        <div class="appimg">
+            <img src="image copy.png" alt="logo" style="width: 100%; height:100%;">
+        </div>
+       <div class="appnam">ACE CHAT GROUP</div>
+       <div class="group" id="x">
+        <div class="newgroup">
+            <button class="pbtn">
+                <img src="image copy.png" alt="img" style="width: 100%;height: 100%; border-radius: 25%;">
+            </button>
+            <button class="ngbtn">fun chat</button>
+        </div>
+       
+       </div>
+       <div class="newg">
+        <button class="gbtn" onclick="newgroup()">+Cgroup</button>
+       </div>
+       
+        
+    </div>
+   <div class="main" id="y">
+        <div class="tomsg">
+           <div class="img">
+            <img src="image.png" alt="img" id="groupimg" style="width: 100%; height: 50px; border-radius: 20px;">
+           </div>
+           <div class="name" id="groupname"> hari singh</div>
+        </div>
+        
+        <div id="messages"></div>
+
+        <!-- Ye send wala div ab .main ke andar aagaya hai -->
+        <div class="send">
+            <input type="text" class="msg" placeholder="enter a msg" id="msg">
+            <button class="snd" onclick="sendbtn(this)" > send</button>
+        </div>
+    </div>
+</div> <!-- Yeh main1 ka closing tag hai -->
+<script src="https://cdn.socket.io/4.8.3/socket.io.min.js"></script>
+
+<script src="cannects.js"></script>
+
+<script src="1st.js"></script>
+    
+    
+</body>
+</html>
