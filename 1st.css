@@ -8,7 +8,7 @@
 
 body {
     background-color: #f0f2f5;
-    height: 100vh;
+    height: 100dvh; /* Dynamic height for mobile keyboards */
     overflow: hidden;
 }
 
@@ -19,7 +19,7 @@ body {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     background-color: rgba(0, 0, 0, 0.6);
     justify-content: center;
     align-items: center;
@@ -81,7 +81,7 @@ body {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     background-color: rgba(0, 0, 0, 0.6);
     justify-content: center;
     align-items: center;
@@ -159,8 +159,9 @@ body {
 /* 3. Main Single Screen Layout (`.main1`) */
 .main1 {
     display: flex;
-    height: 100vh;
+    height: 100dvh;
     width: 100vw;
+    overflow: hidden;
 }
 
 /* Left Sidebar (`.users`) */
@@ -171,7 +172,8 @@ body {
     display: flex;
     flex-direction: column;
     border-right: 1px solid #222d34;
-    height: 100vh;
+    height: 100dvh;
+    flex-shrink: 0;
 }
 
 .appimg {
@@ -259,7 +261,7 @@ body {
     display: none;
     flex-direction: column;
     background-color: #efeae2;
-    height: 100vh;
+    height: 100dvh;
     overflow: hidden;
 }
 
@@ -294,6 +296,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    min-height: 0; /* Crucial for preventing flex container overflow on mobile */
 }
 
 /* Message Bubbles */
@@ -319,7 +322,7 @@ body {
     font-size: 14px;
 }
 
-/* Send Message Bar (Bohot zaroori fix) */
+/* Send Message Bar */
 .send {
     display: flex;
     padding: 10px 20px;
@@ -356,41 +359,35 @@ body {
     background-color: #01755c;
 }
 
-
-
 /* ==========================================
    MOBILE RESPONSIVE DESIGN (Media Query)
    ========================================== */
 @media screen and (max-width: 768px) {
-    /* 1. Jab chat open ho, toh mobile par sidebar hide ho jaye */
     .main1.chat-active .users {
         display: none;
     }
 
-    /* 2. Jab chat open ho, toh mobile par chat window poori screen le le */
     .main1.chat-active .main {
         display: flex !important;
         width: 100vw;
     }
 
-    /* 3. By default mobile par sirf users/groups dikhenge, chat hidden rahegi */
     .users {
         width: 100vw;
-        height: 100vh;
+        height: 100dvh;
     }
 
     .main {
         width: 100vw;
-        height: 100vh;
+        height: 100dvh;
     }
 
-    /* 4. Mobile ke liye chat header mein Back button add karne ke liye styling */
     .back-btn {
         display: block !important;
         background: transparent;
         border: none;
-        font-size: 20px;
-        margin-right: 10px;
+        font-size: 22px;
+        margin-right: 12px;
         cursor: pointer;
         color: #111b21;
     }
