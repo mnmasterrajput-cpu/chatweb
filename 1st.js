@@ -71,6 +71,11 @@ function sign() {
         return;
     }
 
+    // Sign button ko disable karein aur text change karein
+    let signBtn = document.querySelector(".loginBox button:nth-of-type(1)"); // Pehla button (sign)
+    signBtn.innerText = "Loading...";
+    signBtn.disabled = true;
+
     fetch("https://chatweb-ka1f.onrender.com/message", {
         method: "POST",
         headers: {
@@ -92,8 +97,14 @@ function sign() {
     })
     .catch((error) => {
         console.error("Error:", error);
+        alert("Something went wrong!");
+    })
+    .finally(() => {
+        // Response aane ke baad button wapas normal kar dein (agar popup dobara khule toh)
+        signBtn.innerText = "sign";
+        signBtn.disabled = false;
     });
-} 
+}
 
 function groupdetail() {
     fetch("https://chatweb-ka1f.onrender.com/groups", {
@@ -263,6 +274,11 @@ function login() {
         return;
     }
 
+    // Login button ko disable karein aur text change karein
+    let loginBtn = document.querySelector(".loginBox button:nth-of-type(2)"); // Dusra button (login)
+    loginBtn.innerText = "Loading...";
+    loginBtn.disabled = true;
+
     fetch("https://chatweb-ka1f.onrender.com/login", {
         method: "POST",
         headers: {
@@ -285,9 +301,15 @@ function login() {
             recivegroup();
         } else {
             alert(data.message || "Invalid username or password!");
+            // Agar login fail ho jaye toh button wapas theek kar dein
+            loginBtn.innerText = "login";
+            loginBtn.disabled = false;
         }
     })
     .catch((error) => {
         console.error("Login Error:", error);
+        alert("Login failed. Check your connection!");
+        loginBtn.innerText = "login";
+        loginBtn.disabled = false;
     });
 }
